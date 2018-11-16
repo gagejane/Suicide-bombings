@@ -158,13 +158,13 @@ I selected Model 3 for the next phase of model testing because this model had th
 **Table 3. Model Statistics and Hyperparameters for Algorithms**
 
 
-|               |Hyperparameters                       | Accuracy| Recall | Precision |
-|---------------|--------------------------------------|---------|--------|-----------|-
-| Decision Tree  |                                     | .90     | .92    | .88       |
-| Logistic Regression |                                | .88     | .92    | .85       |
-| Random Forest  | 100 trees                           | .90     | .92    | .88       |
-| Gradient Boosting | 100 trees, .1 learning rate      | .89     | .90    | .87       |
-| AdaBoosting |  100 trees, .1 learning rate           | .90     | .92    | .88       |
+|                     | Hyperparameters             | Accuracy | Recall | Precision |
+|---------------------|-----------------------------|----------|--------|-----------|
+| Decision Tree       |                             | .90      | .92    | .88       |
+| Logistic Regression |                             | .88      | .92    | .85       |
+| Random Forest       | 100 trees                   | .90      | .92    | .88       |
+| Gradient Boosting   | 100 trees, .1 learning rate | .89      | .90    | .87       |
+| AdaBoosting         | 100 trees, .1 learning rate | .90      | .92    | .88       |
 
 
 **Figure 10. ROC Curves for Five Algorithms Testing Model 3.**
