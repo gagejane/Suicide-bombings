@@ -7,7 +7,7 @@ Suicide bombings are much less common than other types of terrorist attacks. Fig
 
 **Figure 1. Suicide vs. Non-Suicide Bombings Over Time**
 
-![](suicide_over_time.png)
+![](Suicide_over_time.png)
 
 Further, suicide bombings tend to be concentrated in specific countries; most countries do not experience suicide bombings as a form of terrorism. Figure 2 displays a heatmap of suicide bombings that occurred in 2017.
 
@@ -142,22 +142,23 @@ I ran a series of 10 Decision Tree models, using different iterations of class i
 
 A tree diagram of Model 6 is displayed in Figure 7. This diagram gives a sense for how Decision Trees work. However, Model 6 is an over-simpoified model. A better model is Model 3, which is displayed in Figure 8. This figure shows a much more complex model that is no longer easy to intepret visually.
 
-**Figure 6. A Tree Diagram of Model 6**
+**Figure 7. A Tree Diagram of Model 6**
 
 ![](tree_Model_6.png)
 
-**Figure 7. A Tree Diagree of Model 3**
+**Figure 8. A Tree Diagree of Model 3**
 
 ![](tree_Model_3.png)
 
 
 #### Model Comparison: Algorithms
 
-I selected Model 3 for the next phase of model testing because this model had the highest Recall score of all of the models. Next, I ran Model 3 through a series of algorithms (see Table 3 and Figure 9) I found that model fit statistics did not differ substantively across models.
+I selected Model 3 for the next phase of model testing because this model had the highest Recall score of all of the models. Next, I ran Model 3 through a series of algorithms (see Table 3 and Figure 10) I found that model fit statistics did not differ substantively across models.
 
-**Table 8. Model Statistics and Hyperparameters for Algorithms**
+**Table 3. Model Statistics and Hyperparameters for Algorithms**
 
-| |Hyperparameters| Accuracy| Recall | Precision |
+
+|               |Hyperparameters                       | Accuracy| Recall | Precision |
 |---------------|--------------------------------------|---------|--------|-----------|-
 | Decision Tree  |                                     | .90     | .92    | .88       |
 | Logistic Regression |                                | .88     | .92    | .85       |
@@ -166,17 +167,17 @@ I selected Model 3 for the next phase of model testing because this model had th
 | AdaBoosting |  100 trees, .1 learning rate           | .90     | .92    | .88       |
 
 
-**Figure 9. ROC Curves for Five Algorithms Testing Model 3.**
+**Figure 10. ROC Curves for Five Algorithms Testing Model 3.**
 
-![](roc_Model3_new.png)
+![](ROC_Model3_new.png)
 
-Using a Random Forest Classification, I created a confusion matrix (Figure 10) and displayed feature importances (Figure 11).
+Using a Random Forest Classification, I created a confusion matrix (Figure 11) and displayed feature importances (Figure 12).
 
-**Figure 10. Confusion Matrix for Model 3 Using Random Forest Classification.**
+**Figure 11. Confusion Matrix for Model 3 Using Random Forest Classification.**
 
 ![](CFM_Model3_normed_new.png)
 
-**Figure 11. Feature Importances for Model 3 Using Random Forest Classification**
+**Figure 12. Feature Importances for Model 3 Using Random Forest Classification**
 
 ![](feature_importance_Model3_new.png)
 
