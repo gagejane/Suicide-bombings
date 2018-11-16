@@ -27,7 +27,7 @@ Nonetheless, suicide bombings are more deadly than other forms of terrorism; see
 - Understand situations/contexts in which suicide bombings occur
 - Build a model that accurately predicts when a terrorist attack is a suicide bombing or not
   - Focus on *Recall*: Generate a model with very few false negatives
-- Interpret my final model's feature importances within in order to predict future suicide bombings
+- Interpret my final model's feature importances in order to predict future suicide bombings
 
 ### Data Source
 

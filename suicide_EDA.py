@@ -5,10 +5,7 @@ from sklearn.utils import resample
 from scipy import stats
 import re
 
-def multipletests(pvals, alpha=0.05, method='bonferonni', is_sorted=False, returnsorted=False):
 
-    '''from: https://www.statsmodels.org/dev/_modules/statsmodels/stats/multitest.html'''
-    pass
 
 def crosstabs(df, new_df_name_list, feature_name_list, df_suicide):
     for df_name,feature in zip(new_df_name_list, feature_name_list):
@@ -291,62 +288,3 @@ if __name__ == '__main__':
     # # #
     # #
     df_suicide_DT.to_csv('data/df_suicide_DT.csv', index=False)
-
-    # df_suicide_DT_withLDA_downsample=df[['ME_NA', 'claimed', 'year_2003', 'mil_barr', 'pol_check', 'pol_build', 'rel_place', 'util_elec', 'gov_polit', 'terr_nonstate', 'mil_check', 'explo_vehicle', 'explo_unknown', 'firearm_unknown', 'firearm_rifle', 'explo_project', 'explo_other', 'firearm_handgun', 'claim_internet', 'claim_note', 'claim_personal', 'ishostkid', 'Iraq', 'Afghanistan', 'India', 'Columbia', 'Syria','topic1', 'topic2', 'suicide']]
-    # df_suicide_DT_withLDA_upsample=df[['ME_NA', 'claimed', 'year_2003', 'mil_barr', 'pol_check', 'pol_build', 'rel_place', 'util_elec', 'gov_polit', 'terr_nonstate', 'mil_check', 'explo_vehicle', 'explo_unknown', 'firearm_unknown', 'firearm_rifle', 'explo_project', 'explo_other', 'firearm_handgun', 'claim_internet', 'claim_note', 'claim_personal', 'ishostkid', 'Iraq', 'Afghanistan', 'India', 'Columbia', 'Syria','topic1', 'topic2', 'suicide']]
-    # # # 'mil_pol_targ',
-    # # # , 'crit3'
-    # # # ,'bomb_explo'
-    # # # , 'firearms'
-    # # # df_suicide = df_suicide[suicide_cols]
-
-# [('Utility_Location', 0.0015750212170650157),
-#  ('NonStateMilitia', 0.004039472358080833),
-#  ('Military_Checkpoint', 0.004212109309459604),
-#  ('Government_Politician', 0.004264872668015723),
-#  ('Syria', 0.004582629756375149),
-#  ('Columbia', 0.005020840261969052),
-#  ('Handgun', 0.0076042620318038205),
-#  ('Personal_Claim', 0.009197075736071396),
-#  ('Political_Building', 0.010011141292099044),
-#  ('Politicial_Checkpoint', 0.010629598368992601),
-#  ('Claim_via_Note', 0.012687814612350573),
-#  ('Military_Barracks', 0.013231894633328958),
-#  ('Religious_PlaceOfWorship', 0.016056917379832746),
-#  ('Rifle', 0.0222467931519469),
-#  ('Claim_via_Internet', 0.02362597720196808),
-#  ('Happened_After_2002', 0.02480187902613347),
-#  ('MiddleEast_NorthAfrican', 0.03295403502280479),
-#  ('India', 0.034934990593468315),
-#  ('Other_Explosive', 0.03807041759034671),
-#  ('Afghanistan', 0.03808827671248003),
-#  ('Iraq', 0.04393304549304783),
-#  ('Projectile', 0.047624081292954486),
-#  ('Hostage_Kidnapping', 0.04766174778297396),
-#  ('Claimed_responsibility', 0.09130356053407562),
-#  ('Unknown_Explosive', 0.09494648180988571),
-#  ('Unknown_Firearm', 0.1476135287453559),
-#  ('Explosive_Vehicle', 0.20908153541711363)]
-#     # df_suicide_DT_withLDA_upsample.to_csv('data/df_suicide_DT_withLDA_upsample.csv', index=False)
-    # df_suicide_DT_withLDA_downsample.to_csv('data/df_suicide_DT_withLDA_downsample.csv', index=False)
-
-    # #
-    # ####
-    # # '''Crosstabs'''
-    # # feature_name_list = ['ME_NA', 'claimed', 'year_2003', 'mil_barr', 'pol_check', 'pol_build', 'rel_place', 'util_elec', 'gov_polit', 'terr_nonstate', 'mil_check', 'explo_vehicle', 'explo_unknown', 'firearm_unknown', 'firearm_rifle', 'explo_project', 'explo_other', 'firearm_handgun', 'claim_internet', 'claim_note', 'claim_personal', 'ishostkid', 'Iraq', 'Afghanistan', 'India', 'Columbia', 'Syria', 'motive', 'suicide']
-    # feature_name_list = ['util_elec','terr_nonstate', 'mil_check', 'Syria','gov_polit',  'Columbia', 'firearm_handgun', 'claim_personal',  'pol_build', 'pol_check', 'claim_note', 'mil_barr', 'rel_place','firearm_rifle',  'claim_internet', 'year_2003', 'ME_NA','India',   'Afghanistan', 'explo_other','Iraq', 'explo_project', 'ishostkid', 'claimed', 'explo_unknown', 'firearm_unknown', 'explo_vehicle']
-    #
-    # not_suicide_higher = ['util_elec', 'gov_polit', 'terr_nonstate', 'Columbia', 'firearm_handgun', 'claim_personal', 'claim_note', 'claim_internet', 'firearm_rifle', 'India', 'explo_other', 'explo_project', 'ishostkid', 'explo_unknown', 'firearm_unknown']
-    #
-    # suicide_higher = ['mil_check', 'Syria', 'pol_build', 'pol_check', 'mil_barr', 'rel_place', 'year_2003', 'ME_NA', 'Afghanistan', 'Iraq', 'claimed', 'explo_vehicle']
-    #
-    # df_suicide = df['suicide']
-    #
-    #
-    # # print(crosstabs(df, new_df_name_list, feature_name_list, df_suicide))
-    # # def crosstabs(df, new_df_name_list, feature_name_list, df_suicide):
-    #     # for df_name,feature in zip(new_df_name_list, feature_name_list):
-    # # df_Utility_Location = df['util_elec']
-    # # df_crosstabs_targ = pd.crosstab(df_targtype1,df_suicide, normalize='columns')
-    # for feature in feature_name_list:
-    #     print('{}: {}'.format(feature, pd.crosstab(df[feature],df['suicide_text'], normalize='columns')))

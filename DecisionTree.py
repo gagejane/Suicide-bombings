@@ -32,16 +32,6 @@ from IPython.display import Image
 
 from statsmodels.discrete.discrete_model import Logit
 from statsmodels.tools import add_constant
-# from sklearn.tree import export_graphviz
-# from IPython.display import Image
-# import matplotlib.pyplot as plt
-# from sklearn.metrics import roc_curve, auc
-# from scipy import interp
-#from sklearn.cross_validation import KFold
-# from sklearn.preprocessing import StandardScaler
-# from fancyimpute import SimpleFill, KNN,  IterativeSVD, IterativeImputer
-#
-# from sklearn.tree import export_graphviz
 
 '''DOWNSAMPLED'''
 # #
@@ -175,31 +165,6 @@ dt = tree.DecisionTreeClassifier()
 dt = dt.fit(X_train, y_train)
 y_predict = dt.predict(X_test)
 accuracy = dt.score(X_test, y_test)
-#
-# '''LOGISTIC REGRESSION'''
-#
-# model = LogisticRegression()
-# lgt = model.fit(X_train, y_train)
-# y_predict = lgt.predict(X_test)
-# accuracy = lgt.score(X_test, y_test)
-#
-# '''RANDOM FOREST'''
-# rfc = RandomForestClassifier(n_estimators=100)
-# result = rfc.fit(X_train, y_train)
-# y_predict = rfc.predict(X_test)
-# accuracy = rfc.score(X_test, y_test)
-#
-# '''GRADIENT BOOSTING'''
-# gdbc = GradientBoostingClassifier(learning_rate=0.1, n_estimators=100, random_state=1)
-# result = gdbc.fit(X_train, y_train)
-# y_predict = gdbc.predict(X_test)
-# accuracy = gdbc.score(X_test, y_test)
-#
-# '''ADABOOSTING'''
-# abc = AdaBoostClassifier(DecisionTreeClassifier(learning_rate=0.1, n_estimators=100, random_state=1)
-# result = abd.fit(X_train, y_train)
-# y_predict = abc.predict(X_test)
-# accuracy = abc.score(X_test, y_test)
 
 
 accuracy = np.around(accuracy,3)
@@ -219,102 +184,3 @@ print("Recall: (TP/TP + FALSE NEGATIVE; bottom column), i.e., lower = we failed 
 print("\nPrecision (TP/TP+FALSE POSITIVE; right hand column), i..e, lower = we over-predicted positives: ", (precision))
 print('n test: {}'.format(len(y_test)))
 '''PLOTTING THE TREE ON TEST DATA'''
-
-#pip install graphviz
-# #pip install pydot
-#
-# features = ['MiddleEast_NorthAfrican', 'Claimed_responsibility', 'Happened_After_2002', 'Military_Barracks', 'Politicial_Checkpoint', 'Political_Building', 'Religious_Place_Of_Worship', 'Utility_Location', 'Government_Politician', 'NonStateMilitia', 'Military_Checkpoint', 'Explosive_Vehicle', 'Unknown_Explosive', 'Unknown_Firearm', 'Rifle', 'Projectile', 'Other_Explosive', 'Handgun', 'Claim_via_Internet', 'Claim_via_Note', 'Personal_Claim', 'Hostage_Kidnapping', 'Iraq', 'Afghanistan', 'India', 'Columbia', 'Syria']
-#
-# class_names = ['Not suicide', 'Suicide']
-#
-# dot_data = tree.export_graphviz(dt, out_file=None, feature_names=features, class_names=class_names, filled=True, rounded=True, special_characters=True)
-# graph = graphviz.Source(dot_data)
-# graph
-
-'''ROC'''
-# roc_auc = roc_auc_score(y_test, rfc.predict(X_test))
-# roc_auc = np.around(roc_auc,2)
-# # roc_auc = roc_auc_score(y_test, rfc.predict_proba(X_test)[:, 1])
-# '''figure this shit out'''
-# fpr, tpr, thresolds = roc_curve(y_test, rfc.predict_proba(X_test)[:, 1])
-# plt.figure()
-# plt.plot(fpr, tpr, label='AUC score (area = {})'.format(roc_auc))
-# plt.plot([0,1],[0,1], 'r--')
-# plt.xlim([0,1])
-# plt.ylim([0,1.1])
-# plt.xlabel('False Positive Rate')
-# plt.ylabel('True Positive Rate')
-# plt.title('ROC Curvey for Model 3')
-# plt.legend(loc='lower right')
-# # plt.show()
-# plt.savefig('roc_Model3')
-#
-#
-'''CONFUSION MATRIX'''
-# def plot_confusion_matrix(cm, classes,
-#                           normalize=False,
-#                           title='Confusion matrix',
-#                           cmap=plt.cm.Blues):
-#     """
-#     This function prints and plots the confusion matrix.
-#     Normalization can be applied by setting `normalize=True`.
-#     """
-#     if normalize:
-#         cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
-#         print("Normalized confusion matrix")
-#     else:
-#         print('Confusion matrix, without normalization')
-#
-#     print(cm)
-#
-#     plt.imshow(cm, interpolation='nearest', cmap=cmap)
-#     plt.title(title)
-#     plt.colorbar()
-#     tick_marks = np.arange(len(classes))
-#     plt.xticks(tick_marks, classes, rotation=45)
-#     plt.yticks(tick_marks, classes)
-#
-#     fmt = '.2f' if normalize else 'd'
-#     thresh = cm.max() / 2.
-#     for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
-#         plt.text(j, i, format(cm[i, j], fmt),
-#                  horizontalalignment="center",
-#                  color="white" if cm[i, j] > thresh else "black")
-#
-#     plt.ylabel('True label')
-#     plt.xlabel('Predicted label')
-#     plt.tight_layout()
-#
-# class_names = ['Not suicide', 'Suicide']
-# # Plot non-normalized confusion matrix
-# plt.figure()
-# plot_confusion_matrix(cnf_matrix, classes=class_names,
-#                       title='Confusion matrix, without normalization for Model 3')
-# plt.savefig('CFM_Model3_notnormed')
-# # Plot normalized confusion matrix
-# plt.figure()
-# plot_confusion_matrix(cnf_matrix, classes=class_names, normalize=True,
-#                       title='Normalized confusion matrix for Model 3')
-# plt.savefig('CFM_Model3_normed')
-# # plt.show()
-# #
-# # #
-'''FEATURE IMPORTANCES'''
-# zipped = (zip(df.columns, rfc.feature_importances_))
-# importance = sorted(zipped, key = lambda t: t[1])
-# pprint (importance)
-#
-# feature_names = [i[0] for i in importance]
-# feature_importances = [i[1] for i in importance]
-#
-# plt.figure(figsize = (15,10))
-# plt.bar(feature_names, feature_importances)
-# plt.title('Feature Importance for Model 3')
-# plt.ylabel("Feature Importance")
-# plt.xlabel("Features")
-# plt.xticks(rotation=70, horizontalalignment='right')
-# plt.tight_layout()
-# # plt.show()
-# plt.savefig('feature_importance_Model3')
-#
-# #

@@ -3,6 +3,7 @@ import numpy as np
 from sklearn.utils import resample
 from sklearn.model_selection import train_test_split
 
+'''THIS CREATES TRAIN AND TEST DATAFRAMES'''
 
 def column_clean(df, filename):
     df['ME_NA'] = df['ME_NA'] == True
