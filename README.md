@@ -7,19 +7,19 @@ Suicide bombings are much less common than other types of terrorist attacks. Fig
 
 **Figure 1. Suicide vs. Non-Suicide Bombings Over Time**
 
-![](Suicide_over_time.png)
+![](images/Suicide_over_time.png)
 
 Further, suicide bombings tend to be concentrated in specific countries; most countries do not experience suicide bombings as a form of terrorism. Figure 2 displays a heatmap of suicide bombings that occurred in 2017.
 
 **Figure 2. Heatmap of Suicide Bombings in 2017**
 
-![](Heatmap.png)
+![](images/Heatmap.png)
 
 Nonetheless, suicide bombings are more deadly than other forms of terrorism; see Figure 3 for a plot of the number of people killed in suicide bombings versus non-suicide bombings in 2017 alone. Moreover, this type of terrorist attack (along with terrorism in general), is increasingly prevalent over time (see growth in terorrism prevalence across time in Figure 1).
 
 **Figure 3. Log Number of Poeple Killed by Suicide vs. Non-Suicide Bombings in 2017**
 
-![](killed.png)
+![](images/killed.png)
 
 *Note. Given that the data were heavily skewed right, the data were transformed by adding 1 and then taking the log of each datapoint.*
 
@@ -104,19 +104,19 @@ To determine an optimal number of latent topics, I plotted Coherence Scores (hig
 
 **Figure 4. LDA Coherence Scores for a Range of 1-10 Topics**
 
-![](coherence_new.png)
+![](images/coherence_new.png)
 
 When I inspected a visual representation of latent 10 topics (see Figure 5), I noted the clustering looked most like a three topic pattern. Modeling with 10 topics had a coherence score .35.
 
 **Figure 5. A Visualzation of an LDA Model with 10 Latent Topics**
 
-![](top10_new.jpg)
+![](images/top10_new.jpg)
 
 Thus, I opted to model the data using three clusters (see Figure 6); this model had a coherence score of .30.
 
 **Figure 6. A Visualzation of an LDA Model with 3 Latent Topics**
 
-![](top3_new.jpg)
+![](images/top3_new.jpg)
 
 After generating LDA scores for three topics for each case in both the training and testing dataframes, I merged the LDA scores into the original training and testing dataframes. Note that cases were dropped that did not have LDA scores (i.e., text in the motive column consisted only of stopwords/stop phrases).
 
@@ -144,11 +144,11 @@ A tree diagram of Model 6 is displayed in Figure 7. This diagram gives a sense f
 
 **Figure 7. A Tree Diagram of Model 6**
 
-![](tree_Model_6.png)
+![](images/tree_Model_6.png)
 
 **Figure 8. A Tree Diagree of Model 3**
 
-![](tree_Model_3.png)
+![](images/tree_Model_3.png)
 
 
 #### Model Comparison: Algorithms
@@ -169,17 +169,17 @@ I selected Model 3 for the next phase of model testing because this model had th
 
 **Figure 10. ROC Curves for Five Algorithms Testing Model 3.**
 
-![](ROC_Model3_new.png)
+![](images/ROC_Model3_new.png)
 
 Using a Random Forest Classification, I created a confusion matrix (Figure 11) and displayed feature importances (Figure 12).
 
 **Figure 11. Confusion Matrix for Model 3 Using Random Forest Classification.**
 
-![](CFM_Model3_normed_new.png)
+![](images/CFM_Model3_normed_new.png)
 
 **Figure 12. Feature Importances for Model 3 Using Random Forest Classification**
 
-![](feature_importance_Model3_new.png)
+![](images/feature_importance_Model3_new.png)
 
 ### Interpreting Feature Importance
 We can use feature importances (see Figure 11) and directional effects observed during EDA (see Table 1) to make assumptions about suicide bombing. The most important feature was whether or not an explosive in a vehicle was used; suicide bombings are particularly likely to use this type of weapon. Terrorist groups that use suicide bombing are also particularly likely to claim responsibility for the incident, suggesting they seek noteriety for their deeds. That is, these groups are forthcoming and tend not to hide in the shadows. Finally, suicide bombings are more likely than other types of terrorist attacks in Afghanistan and Iraq. Taken together, this suite of characteristics suggests authorities and individuals should **be cautious in Irah and Afghanistan** and be particularly **vigilent in areas that have a high density of vehicles**. Authorities should **monitor terriost groups that have claimed responsibility** for suicide bombings in the past.
