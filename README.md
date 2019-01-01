@@ -132,7 +132,8 @@ I ran a series of Decision Tree models, using different iterations of class imba
 | Model 1 |downsampling|   |  .84     | .87   | .82      | 536        |
 | Model 2 |downsampling| X |  .80     | .82   | .78      | 536        |
 | Model 3 |upsampling  |   |  .89     | .92   | .87      | 9659       |
-| Model 4 |upsampling  | X |  .84     | .83   | .84      | 9659       |
+| Model 4 |upsampling  | X |  .84     | .83   | .84      | 9659       ||
+
 <!-- | Model 4 |upsampling  |   | <= .02| .87     | .88   | .87      | 9590       |
 | Model 5 |upsampling  |   | <= .03| .86     | .88   | .85      | 9590       |
 | Model 6 |upsampling  |   | <= .08| .78     | .79   | .78      | 9590       | -->
