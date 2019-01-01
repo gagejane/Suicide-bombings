@@ -19,9 +19,9 @@ Nonetheless, suicide bombings are more deadly than other forms of terrorism; see
 
 **Figure 3. Log Number of Poeple Killed by Suicide vs. Non-Suicide Bombings in 2017**
 
-![](images/killed.png)
+![](images/killed1.png)
 
-*Note. Given that the data were heavily skewed right, the data were transformed by adding 1 and then taking the log of each datapoint.*
+*Note. Given that the data were heavily skewed right, the data were transformed by adding 1 and then taking the log base 10 of each datapoint.*
 
 ### Project Goals
 - Understand situations/contexts in which suicide bombings occur
@@ -122,64 +122,66 @@ After generating LDA scores for three topics for each case in both the training 
 
 ### Modelling
 
-I ran a series of 10 Decision Tree models, using different iterations of class imbalance strategies and features (see Table 2). I observed Accuracy, Recall, and Precision in order to select the optimal model. I focused particularly on Recall, which is an important index for predicting suicide bombings. That is, it is important to "catch" the highest number of suicide bombings possible, which is reflected by the Recall score.
+I ran a series of Decision Tree models, using different iterations of class imbalance strategies and features (see Table 2). I observed Accuracy, Recall, and Precision in order to select the optimal model. I focused particularly on Recall, which is an important index for predicting suicide bombings. That is, it is important to "catch" the highest number of suicide bombings possible, which is reflected by the Recall score.
 
 #### Model Comparison: Class Imbalance Strategies and Features
 **Table 2. Decision Tree Statistics and Model Characteristics**
 
-|          |Class imbalance  <br />strategy | LDA topics  <br />in model| Feature <br /> importance  <br />threshold | Accuracy | Recall | Precision | N size  <br />(testing) |
+|          |Class imbalance  <br />strategy | LDA topics  <br />in model|  Accuracy | Recall | Precision | N size  <br />(testing) |
 |----------|------------|----------|-----|----------|--------|-----------|-------------|
-| Model 1 |downsampling|   | 0     | .86     | .83   | .88      | 544        |
-| Model 2 |downsampling| X | 0     | .81     | .75   | .85      | 542        |
-| Model 3 |upsampling  |   | 0     | .90     | .92   | .88      | 9590       |
-| Model 4 |upsampling  |   | <= .02| .87     | .88   | .87      | 9590       |
+| Model 1 |downsampling|   |  .84     | .87   | .82      | 536        |
+| Model 2 |downsampling| X |  .80     | .82   | .78      | 536        |
+| Model 3 |upsampling  |   |  .89     | .92   | .87      | 9659       |
+| Model 4 |upsampling  | X |  .84     | .83   | .84      | 9659       |
+<!-- | Model 4 |upsampling  |   | <= .02| .87     | .88   | .87      | 9590       |
 | Model 5 |upsampling  |   | <= .03| .86     | .88   | .85      | 9590       |
-| Model 6 |upsampling  |   | <= .08| .78     | .79   | .78      | 9590       |
-| Model 7 |upsampling  | X | 0     | .84     | .83   | .83      | 9590       |
-| Model 8 |upsampling  | X | <= .02| .81     | .81   | .81      | 9590       |
+| Model 6 |upsampling  |   | <= .08| .78     | .79   | .78      | 9590       | -->
+<!-- | Model 8 |upsampling  | X | <= .02| .81     | .81   | .81      | 9590       |
 | Model 9 |upsampling  | X | <= .03| .80     | .80   | .79      | 9590       |
-| Model 10|upsampling  | X | <= .08| .71     | .70   | .70      | 9590       |
+| Model 10|upsampling  | X | <= .08| .71     | .70   | .70      | 9590       | -->
 
-A tree diagram of Model 6 is displayed in Figure 7. This diagram gives a sense for how Decision Trees work. However, Model 6 is an over-simpoified model. A better model is Model 3, which is displayed in Figure 8. This figure shows a much more complex model that is no longer easy to intepret visually.
+The best model was Model 3; the tree diagram for this model is displayed in Figure 7.
+#This figure shows a quite complex model that is no longer easy to intepret visually.
 
-**Figure 7. A Tree Diagram of Model 6**
+**Figure 7. A Tree Diagram of Model 3**
 
-![](images/tree_Model_6.png)
+<!-- ![](images/tree_Model_6.png) -->
 
-**Figure 8. A Tree Diagree of Model 3**
+<!-- **Figure 8. A Tree Diagree of Model 3** -->
 
 ![](images/tree_Model_3.png)
 
 
 #### Model Comparison: Algorithms
 
-I selected Model 3 for the next phase of model testing because this model had the highest Recall score of all of the models. Next, I ran Model 3 through a series of algorithms (see Table 3 and Figure 10) I found that model fit statistics did not differ substantively across models.
+<!-- I selected Model 3 for the next phase of model testing because this model had the highest Recall score of all of the models.  -->
+Next, I ran Model 3 through a series of algorithms (see Table 3 and Figure 9) I found that model fit statistics did not differ substantively across models.
 
 **Table 3. Model Statistics and Hyperparameters for Algorithms**
 
 
 |                     | Hyperparameters             | Accuracy | Recall | Precision |
 |---------------------|-----------------------------|----------|--------|-----------|
-| Decision Tree       |                             | .90      | .92    | .88       |
-| Logistic Regression |                             | .88      | .92    | .85       |
-| Random Forest       | 100 trees                   | .90      | .92    | .88       |
-| Gradient Boosting   | 100 trees, .1 learning rate | .89      | .90    | .87       |
-| AdaBoosting         | 100 trees, .1 learning rate | .90      | .92    | .88       |
+| Decision Tree       |                             | .89      | .92    | .87       |
+| Logistic Regression |                             | .87      | .92    | .84       |
+| Random Forest       | 100 trees                   | .89      | .92    | .87       |
+| Gradient Boosting   | 100 trees, .1 learning rate | .88      | .90    | .86       |
+| AdaBoosting         | 100 trees, .1 learning rate | .89      | .92    | .87       |
 
 
-**Figure 10. ROC Curves for Five Algorithms Testing Model 3.**
+**Figure 9. ROC Curves for Five Algorithms Testing Model 3.**
 
-![](images/ROC_Model3_new.png)
+![](images/ROC.png)
 
-Using a Random Forest Classification, I created a confusion matrix (Figure 11) and displayed feature importances (Figure 12).
+Using a Random Forest Classification, I created a confusion matrix (Figure 10) and displayed feature importances (Figure 11).
 
-**Figure 11. Confusion Matrix for Model 3 Using Random Forest Classification.**
+**Figure 10. Confusion Matrix for Model 3 Using Random Forest Classification.**
 
-![](images/CFM_Model3_normed_new.png)
+![](images/CFM_normed.png)
 
-**Figure 12. Feature Importances for Model 3 Using Random Forest Classification**
+**Figure 11. Feature Importances for Model 3 Using Random Forest Classification**
 
-![](images/feature_importance_Model3_new.png)
+![](images/feature_importance.png)
 
 ### Interpreting Feature Importance
 We can use feature importances (see Figure 11) and directional effects observed during EDA (see Table 1) to make assumptions about suicide bombing. The most important feature was whether or not an explosive in a vehicle was used; suicide bombings are particularly likely to use this type of weapon. Terrorist groups that use suicide bombing are also particularly likely to claim responsibility for the incident, suggesting they seek noteriety for their deeds. That is, these groups are forthcoming and tend not to hide in the shadows. Finally, suicide bombings are more likely than other types of terrorist attacks in Afghanistan and Iraq. Taken together, this suite of characteristics suggests authorities and individuals should **be cautious in Irah and Afghanistan** and be particularly **vigilent in areas that have a high density of vehicles**. Authorities should **monitor terriost groups that have claimed responsibility** for suicide bombings in the past.
