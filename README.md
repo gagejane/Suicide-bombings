@@ -142,7 +142,8 @@ I ran a series of Decision Tree models, using different iterations of class imba
 | Model 10|upsampling  | X | <= .08| .71     | .70   | .70      | 9590       | -->
 
 The best model was Model 3; the tree diagram for this model is displayed in Figure 7.
-#This figure shows a quite complex model that is no longer easy to intepret visually.
+
+<!-- This figure shows a quite complex model that is no longer easy to intepret visually. -->
 
 **Figure 7. A Tree Diagram of Model 3**
 
