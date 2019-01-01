@@ -128,7 +128,7 @@ I ran a series of Decision Tree models, using different iterations of class imba
 **Table 2. Decision Tree Statistics and Model Characteristics**
 
 |          |Class imbalance  <br />strategy | LDA topics  <br />in model|  Accuracy | Recall | Precision | N size  <br />(testing) |
-|----------|------------|----------|-----|----------|--------|-----------|-------------|
+|----------|--------------------------------|---------------------------|-----------|--------|-----------|-------------------------|
 | Model 1 |downsampling|   |  .84     | .87   | .82      | 536        |
 | Model 2 |downsampling| X |  .80     | .82   | .78      | 536        |
 | Model 3 |upsampling  |   |  .89     | .92   | .87      | 9659       |
